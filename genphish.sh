@@ -504,7 +504,7 @@ Choose the HTTP(S) Relay$grey
 	    openport -K
 	    openport --local-port $port --http-forward --ip-link-protection True > sendlink.txt 2> /dev/null &
 	    sleep 10
-	    send_link=$((cat sendlink.txt | grep -e "https://www.openport.io/" | cut -d ' ' -f 14) | cut -d '=' -f 2)
+	    send_link=$(cat sendlink.txt | grep -e "https://www.openport.io/" | cut -d ' ' -f 14 | cut -d '=' -f 2)
 	    echo -e "[+] Send this link to the Victim:$yellowb $send_link$grey";;
 
 	4 | 04 )
