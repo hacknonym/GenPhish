@@ -607,6 +607,7 @@ function update(){
 		sudo chmod +x genphish.sh log_script.sh 1> /dev/null
 		echo -e "$green OK$grey"
 		./genphish.sh --version
+		exit 1
 	fi
 }
 
