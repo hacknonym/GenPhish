@@ -1,0 +1,95 @@
+*{
+  font-family: Helvetica, sans-serif;
+  outline: 0;
+}
+
+html{
+  background-color: #fafafa;
+}
+
+h1{
+  text-decoration: none;
+  color: #232323;
+  border-bottom: 1px solid #7e7e7e;
+  padding: 15px;
+  margin-bottom: 15px;
+  font-size: 2.2em;
+}
+
+h1 > span{
+  margin-left: 5px;
+  font-size: 0.5em;
+}
+
+img{
+  width: 60px;
+  float: left;
+  padding-right: 10px;
+}
+
+p{ 
+  font-size: 1.1em;
+  margin-left: 5px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+table{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td, table th{
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table tr:nth-child(even){ background-color: #f2f2f2; }
+
+table tr:hover{ background-color: #ddd; }
+
+table th{
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #195389;
+  color: white;
+}
+
+form > input{
+  position: inline-block;
+  border: none;
+  text-decoration: none;
+  background-color: #d9d9d9;
+  padding: 10px;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #232323;
+  border-radius: 3px;
+  padding: 13px;
+  width: 150px;
+  text-align: center;
+  cursor: pointer;
+}
+
+form > input:hover{
+  background-color: #e14545;
+  color: white;
+  transition: 0.2s;
+}
+
+td[abbr="color"]{ 
+  color: red;
+  font-weight: bold;
+}
+
+footer{
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  color: #007d98;
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: bold;
+}

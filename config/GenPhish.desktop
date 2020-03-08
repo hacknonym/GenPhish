@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=GenPhish
+Version=1.0
+Comment=Generate a phony phishing website from any real website.
+Exec=gnome-terminal -t "GenPhish 1.0" --geometry=80x24 -e "bash -c 'genphish';bash"
+Icon=/usr/share/icons/GenPhish.ico
+Keywords=Phishing;Hacking;Password;
+Terminal=true
+Type=Application
+StartupNotify=false
