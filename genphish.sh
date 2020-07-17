@@ -36,7 +36,7 @@ function user_privs(){
   		echo -n
   	else
   		echo -e "[x] You don't have root privileges"
-  		exit 1
+  		exit 0
 	fi
 }
 
@@ -79,7 +79,7 @@ function setup(){
 	shortcut
 	internet
 	if [ $? -eq 2 ] ; then
-		exit 1
+		exit 0
 	else
 		echo -e "[+] Install Dependencies of GenPhish..."
 		echo -ne "[+] Update cache..."
@@ -598,13 +598,13 @@ function kill_quit(){
 	cd $MAIN_PATH && rm -rf $domainRep
 	cd $MAIN_PATH/relays/ && rm sendlink.txt 1> /dev/null 2>&1
 	echo -e "[+] Quit GenPhish..."
-	exit 1
+	exit 0
 }
 
 function update(){
 	internet
 	if [ $? -eq 2 ] ; then
-		exit 1
+		exit 0
 	else
 		echo -e "[+] Update of GenPhish in progress..."
 		echo -n "[+] Retrieve Repository..."
@@ -615,7 +615,7 @@ function update(){
 		sudo chmod +x genphish.sh log_script.sh 1> /dev/null
 		echo -e "$green OK$grey"
 		./genphish.sh --version
-		exit 1
+		exit 0
 	fi
 }
 
@@ -639,26 +639,26 @@ Generate a phony phishing website from any real website.
 Examples:
   genphish -u https://website.com/login.php -a  (httrack)
   genphish -u https://website.com/login.php     (wget)"""
-  exit 1
+  exit 0
 }
 
 if [ "$1" = "-h" -o "$1" = "--help" ] ; then
 	help
 elif [ "$1" = "-V" -o "$1" = "--version" ] ; then
 	echo -e "genphish - Version $VERSION"
-	exit 1
+	exit 0
 elif [ "$1" = "-v" -o "$1" = "--viewlog" ] ; then
 	echo -en "\033[1A" && display_log
-	exit 1
+	exit 0
 elif [ "$1" = "-r" -o "$1" = "--rmlog" ] ; then
 	rm -f $MAIN_PATH/ident.txt
 	touch $MAIN_PATH/ident.txt
 	echo -e "[+] The log have been deleted -> $yellow$MAIN_PATH/ident.txt$grey"
-	exit 1
+	exit 0
 elif [ "$1" = "--update" ] ; then
-	update && exit 1
+	update && exit 0
 elif [ "$1" = "--setup" ] ; then
-	setup && exit 1
+	setup && exit 0
 elif [ $# -ge 2 ] ; then
 	if [ $1 = "--url" -o $1 = "-u" ] ; then
 		if [ "$3" = "--all" -o "$3" = "-a" ] ; then
@@ -689,7 +689,7 @@ retrieve_variables
 display_log
 #If not Internet relays can not work
 if [ $? -eq 2 ] ; then
-	exit 1
+	exit 0
 else
 	relays
 fi
