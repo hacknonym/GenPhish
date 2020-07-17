@@ -1,11 +1,11 @@
 # GenPhish
 
-[![Version](https://img.shields.io/badge/Version-1.0-blue)]()
-[![Language](https://img.shields.io/badge/Bash-4.2%2B-brightgreen)]()
-[![Build](https://img.shields.io/badge/Supported_OS-Linux-orange.svg)]()
-[![Available](https://img.shields.io/badge/Available-Kali%20Linux-red)]()
-[![Download](https://img.shields.io/badge/Size-59.2M-brightgreen)]()
-[![License](https://img.shields.io/badge/License-GPL%20v3%2B-red)]()
+[![Version](https://img.shields.io/badge/Version-1.0-blue.svg?style=for-the-badge)]()
+[![Language](https://img.shields.io/badge/Bash-4.2%2B-brightgreen.svg?style=for-the-badge)]()
+[![Build](https://img.shields.io/badge/Supported_OS-Linux-orange.svg?style=for-the-badge)]()
+[![Available](https://img.shields.io/badge/Available-Kali%20Linux-red.svg?style=for-the-badge)]()
+[![Download](https://img.shields.io/badge/Size-59.2M-brightgreen.svg?style=for-the-badge)]()
+[![License](https://img.shields.io/badge/License-GPL%20v3%2B-red.svg?style=for-the-badge)](https://github.com/hacknonym/GenPhish/blob/master/LICENSE)
 
 ### Author: github.com/hacknonym
 
